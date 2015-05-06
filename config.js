@@ -52,6 +52,15 @@ var config = {
   // 话题列表显示的话题数量
   list_topic_count: 20,
 
+  // 微信的相关配置
+  weixin: {
+    authorizeUrl: 'https://open.weixin.qq.com/connect/oauth2/authorize',
+    appid: 'wx35ee7d6d83988da7',
+    redirectUri: 'http://m.myclub.top/signup'
+  },
+
+
+
   // RSS配置
   rss: {
     title: 'CNode：Node.js专业中文俱乐部的',
