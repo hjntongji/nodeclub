@@ -1,10 +1,94 @@
 .hidden {
     display: none;
 }
+.inner.content {
+    background-color: #fef9e2;
+}
 .inner li.select{
     background-color: green !important;
     color: white !important;
 }
+.progressBarLabels {
+    position: relative;
+    top: 0;
+    margin: 0 auto;
+    z-index: 2
+}
+
+.progressBarLabel {
+    color: #fff;
+    text-align: center;
+    background-color: #5dbb89;
+    font-size: .9rem;
+    border-radius: 50%;
+    border: 1px solid #61a780;
+    font-weight: 400;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    margin: 0 .75rem;
+    margin-top: -1px
+}
+
+.progressBarLabelInvalid {
+    color: #c5c4c4;
+    text-align: center;
+    background-color: #e7e7e7;
+    font-size: .9rem;
+    border-radius: 50%;
+    border: 1px solid #c7c7c7;
+    font-weight: 400;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    line-height: 1rem;
+    margin: 0 .75rem;
+    margin-top: -1px
+}
+
+.progressBarBgValidShape {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    width: 12.5rem;
+    height: .125rem;
+    margin-left: -6.25rem;
+    z-index: 1;
+    background-color: #5dbb89
+}
+
+.progressBarBgInvalidShape {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    width: 12.5rem;
+    height: .125rem;
+    margin-left: -6.25rem;
+    z-index: 0;
+    background-color: #e7e7e7
+}
+
+.progressBarBgValid {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    width: 12rem;
+    margin-left: -6rem;
+    border: 1px solid #5dbb89;
+    z-index: 1
+}
+
+.progressBarBgInValid {
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    width: 12rem;
+    margin-left: -6rem;
+    border: 1px solid #e7e7e7;
+    z-index: 0
+}
+
 .cmp_loading_loadingNow {
     position: fixed;
     top: 0;
