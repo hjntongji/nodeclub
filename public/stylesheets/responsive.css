@@ -131,10 +131,10 @@
   }
 
   .form-horizontal .control-label {
-      float: none;
+      /* float: none; */
       width: auto;
       padding-top: 0;
-      text-align: left;
+      text-align: right;
   }
 
   .form-horizontal .controls {
