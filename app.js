@@ -90,6 +90,7 @@ app.use(session({
 app.use(passport.initialize());
 
 // custom middleware
+// app.use(auth.authWeixin);
 app.use(auth.authUser);
 app.use(auth.blockUser());
 
@@ -139,7 +140,7 @@ app.use(busboy({
 }));
 
 // routes
-app.use('/api/v1', cors(), apiRouterV1);
+// app.use('/api/v1', cors(), apiRouterV1);
 app.use('/', webRouter);
 
 // error handler
