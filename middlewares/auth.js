@@ -78,7 +78,7 @@ exports.authWeixin = function (req, res, next) {
   // }
   var authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
   var appid = 'wx35ee7d6d83988da7';
-  var redirectUri = 'http://m.myclub.top/signup';
+  var redirectUri = 'http://m.zuimeng.org/signup';
   var scope = 'snsapi_userinfo';
   var redirectUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
   
