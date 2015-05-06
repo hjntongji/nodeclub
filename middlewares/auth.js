@@ -78,7 +78,6 @@ exports.authWeixin = function (req, res, next) {
   // }
   var authorizeUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize';
   var appid = 'wx35ee7d6d83988da7';
-  var redirectUri = 'http://zuimengorg.oicp.net';
   var redirectUri = 'http://m.myclub.top/signup';
   var scope = 'snsapi_userinfo';
   var redirectUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
@@ -106,7 +105,7 @@ exports.authWeixin = function (req, res, next) {
         console.log(openid);
       } else if (is_weixin_auth || is_weixin_auth === 'true') {
         console.log(is_weixin_auth);
-        console.log(res.code);
+        console.log(req.code);
       }
       return next();
     }
