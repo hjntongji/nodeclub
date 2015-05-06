@@ -3,10 +3,17 @@ var Schema = mongoose.Schema;
 var utility = require('utility');
 
 var UserSchema = new Schema({
+  university: {type:String},
+  phone: {type:String},  
+  major: {type:String},
+  gradate: {type:String},
+  edu: {type:String},
+
   name: { type: String},
   loginname: { type: String},
   pass: { type: String },
   email: { type: String},
+ 
   url: { type: String },
   profile_image_url: {type: String},
   location: { type: String },

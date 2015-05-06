@@ -17,8 +17,12 @@ exports.showSignup = function (req, res) {
 exports.signup = function (req, res, next) {
   var loginname = validator.trim(req.body.loginname).toLowerCase();
   var email = validator.trim(req.body.email).toLowerCase();
-  var pass = validator.trim(req.body.pass);
-  var rePass = validator.trim(req.body.re_pass);
+  var university = validator.trim(req.body.university);
+  var phone = validator.trim(req.body.phone);
+  var major = validator.trim(req.body.major);
+  var edu = validator.trim(req.body.edu);
+  var gradate = validator.trim(req.body.gradate);
+  //var phone = validator.trim(req.body.phone);
 
   var ep = new eventproxy();
   ep.fail(next);
@@ -28,7 +32,7 @@ exports.signup = function (req, res, next) {
   });
 
   // 验证信息的正确性
-  if ([loginname, pass, rePass, email].some(function (item) { return item === ''; })) {
+ /* if ([loginname, pass, rePass, email].some(function (item) { return item === ''; })) {
     ep.emit('prop_err', '信息不完整。');
     return;
   }
@@ -44,11 +48,22 @@ exports.signup = function (req, res, next) {
   }
   if (pass !== rePass) {
     return ep.emit('prop_err', '两次密码输入不一致。');
-  }
+  }*/
   // END 验证信息的正确性
 
 
-  User.getUsersByQuery({'$or': [
+ User.newAndSave(university,loginname, phone, email, major, edu ,gradate, function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.render('sign/signup', {
+      success: '欢迎加入' + config.name + '!',
+      description:  config.description, 
+      mailinfo: '我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
+    });
+ });
+
+  /*User.getUsersByQuery({'$or': [
     {'loginname': loginname},
     {'email': email}
   ]}, {}, function (err, users) {
@@ -58,8 +73,10 @@ exports.signup = function (req, res, next) {
     if (users.length > 0) {
       ep.emit('prop_err', '用户名或邮箱已被使用。');
       return;
-    }
+    } 
+    //university,loginname, phone, email, major, edu ,gradate, callback
 
+   
     tools.bhash(pass, ep.done(function (passhash) {
       // create gravatar
       var avatarUrl = User.makeGravatar(email);
@@ -75,7 +92,7 @@ exports.signup = function (req, res, next) {
       });
 
     }));
-  });
+  });*/
 };
 
 /**

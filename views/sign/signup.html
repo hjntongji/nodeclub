@@ -1,110 +1,303 @@
-<%- partial('../sign/sidebar') %>
-<meta name="viewport" content="width=320px, user-scalable=no, initial-scale=1, maximum-scale=1">
+<!-- <%- partial('../sign/sidebar') %> -->
+<link rel="stylesheet" href="http://p1.cdn.pengpengla.com/h5/h5knowMe/css/game/style.css?v=1429670455656">
 <div id='content'>
   <div class='panel'>
     <div class='header'>
-      <ul class='breadcrumb'>
+      <!-- <ul class='breadcrumb'>
         <li><a href='/'>主页</a><span class='divider'>/</span></li>
         <li class='active'>注册</li>
-      </ul>
-    </div>
-    <div class='inner'>
-      <% if (typeof(error) !== 'undefined' && error) { %>
-      <div class="alert alert-error">
-        <a class="close" data-dismiss="alert" href="#">&times;</a>
-        <strong><%= error %></strong>
+      </ul> -->
+      <div class="contentProgressBar">
+          <div class="progressBarLabels"><span class="progressBarLabel">1</span><span class="progressBarLabelInvalid">2</span><span class="progressBarLabelInvalid">3</span><span class="progressBarLabelInvalid">4</span><span class="progressBarLabelInvalid">5</span><span class="progressBarLabelInvalid">6</span><span class="progressBarLabelInvalid">7</span></div>
+          <div class="progressBarBgValidShape" style="width:0rem"></div>
+          <div class="progressBarBgInvalidShape"></div>
       </div>
-      <% } %>
-      <% if (typeof(success) !== 'undefined' && success) { %>
-      <div class="alert alert-success">
-        <strong><%= success %></strong>
-      </div>
-      <% } else { %>
-      <form id='signup_form' class='form-horizontal' action='/signup' method='post'>
-
-      <div class='form-group'>
-          <label class='col-xs-3 control-label' for='university'>学校</label>
-          <div class='col-xs-7'>
-            <select id="univerity" class='form-control' name = "university">
-             <option>同济大学</option>
-             <option>清华大学</option>
-            </select>
-          </div>
-        </div>
-
-        <div class='form-group'>
-          <label class='col-xs-3 control-label' for='loginname'>姓名</label>
-          <div class='col-xs-7'>
-            <% if (typeof(loginname) !== 'undefined') { %>
-            <input class='form-control' id='loginname' name='loginname' size='30' type='text' value='<%= loginname %>'/>
-            <% } else { %>
-            <input class='form-control' id='loginname' name='loginname' size='30' type='text' value=''/>
-            <% } %>
-          </div>
-        </div>
-        <div class='form-group'>
-          <label class='col-xs-3 control-label' for='phone'>手机号</label>
-
-          <div class='col-xs-7'>
-            <input class='form-control' id='phone' name='phone' size='30' type='text'/>
-          </div>
-        </div>
-       
-        <div class='form-group'>
-          <label class='col-xs-3 control-label' for='email'>电子邮箱</label>
-
-          <div class='col-xs-7'>
-            <% if (typeof(email) !== 'undefined') { %>
-            <input class='form-control' id='email' name='email' size='30' type='text' value='<%= email %>'/>
-            <% } else { %>
-            <input class='form-control' id='email' name='email' size='30' type='text'/>
-            <% } %>
-          </div>
-        </div>
-         <div class='form-group'>
-          <label class='col-xs-3 control-label' for='major'>专业</label>
-
-          <div class='col-xs-7' >
-            <input class='form-control' id='major' name='major' size='30' type='text'  />
-          </div>
-        </div>
-
-
-        <div class='form-group'>
-        
-           <label class='col-xs-3 control-label' for='major' >学历</label>
-          <div class='col-xs-7' >
-
-             <input type="radio" name="major" value="bachelor" checked="checked" />本科
-             <input type="radio" name="major" value="master" />硕士
-             <input type="radio" name="major" value="doctor" />博士
-          </div>
-        </div>
-
-        <div class='form-group'>
-        
-           <label class='col-xs-3 control-label' for='date'>毕业时间</label>
-          <div class='col-xs-7'>
-
-             <select id="date"  class='form-control' name = "date"  >
-             <option>2018</option>
-             <option>2017</option>
-             <option>2016</option>
-             <option>2015</option>
-             <option>2014</option>
-             <option>2013</option>
-            </select>
-          </div>     
-        </div>
-        <div class='form-group'>
-          <input type='hidden' name='_csrf' value='<%= csrf %>'/>
-
-          <div class='col-xs-offset-3 col-xs-7'>
-            <input type='submit' class='span-primary form-control' value='注册'/>
-          </div>
-        </div>
-      </form>
-      <% } %>
     </div>
+    <div class='inner content'>
+      <div id='ques1' class="con">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+            <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id='ques2' class="con hidden">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+              <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id='ques3' class="con hidden">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+              <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id='ques4' class="con hidden">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+              <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id='ques5' class="con hidden">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+              <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id='ques6' class="con hidden">
+          <div class="pic"><img class="qoPic" src="http://p.cdn.pengpengla.com/game/pic/knowme/351.jpg" alt="">
+              <p class="pTitle">我有变“弯”的潜力吗？</p>
+          </div>
+          <ul>
+              <li>太直了，不可能
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>有时对同性会有好感流露
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不用变，已经是了
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+              <li>不仅已变弯，还是受哦
+                  <div class="con_correct">
+                      <div class="con_incorrect"></div>
+                  </div>
+              </li>
+          </ul>
+      </div>
+      <div id = "ques7" class="hidden">
+        <% if (typeof(error) !== 'undefined' && error) { %>
+        <div class="alert alert-error">
+          <a class="close" data-dismiss="alert" href="#">&times;</a>
+          <strong><%= error %></strong>
+        </div>
+        <% } %>
+        <% if (typeof(success) !== 'undefined' && success) { %>
+        <div class="alert alert-success">
+          <strong><%= success %><br/> <%= description %><br/> <%= mailinfo %><br/></strong>
+        </div>
+        <% } else { %>
+        <form id='signup_form' class='form-horizontal' action='/signup' method='post'>
+
+          <div class='form-group' style="">
+            <label class='col-xs-3 control-label' for='university'>学校</label>
+            <div class='col-xs-7'>
+              <select id="univerity" class='form-control' name = "university">
+               <option>同济大学</option>
+               <option>清华大学</option>
+              </select>
+            </div>
+          </div>
+
+          <div class='form-group'>
+            <label class='col-xs-3 control-label' for='loginname'>姓名</label>
+            <div class='col-xs-7'>
+              <% if (typeof(loginname) !== 'undefined') { %>
+              <input class='form-control' id='loginname' name='loginname' size='30' type='text' value='<%= loginname %>'/>
+              <% } else { %>
+              <input class='form-control' id='loginname' name='loginname' size='30' type='text' value=''/>
+              <% } %>
+            </div>
+          </div>
+          <div class='form-group'>
+            <label class='col-xs-3 control-label' for='phone'>手机号</label>
+
+            <div class='col-xs-7'>
+              <input class='form-control' id='phone' name='phone' size='30' type='text'/>
+            </div>
+          </div>
+         
+          <div class='form-group'>
+            <label class='col-xs-3 control-label' for='email'>电子邮箱</label>
+
+            <div class='col-xs-7'>
+              <% if (typeof(email) !== 'undefined') { %>
+              <input class='form-control' id='email' name='email' size='30' type='text' value='<%= email %>'/>
+              <% } else { %>
+              <input class='form-control' id='email' name='email' size='30' type='text'/>
+              <% } %>
+            </div>
+          </div>
+           <div class='form-group'>
+            <label class='col-xs-3 control-label' for='major'>专业</label>
+
+            <div class='col-xs-7' >
+              <input class='form-control' id='major' name='major' size='30' type='text'  />
+            </div>
+          </div>
+
+
+          <div class='form-group'>
+          
+             <label class='col-xs-3 control-label' for='edu' >学历</label>
+            <div class='col-xs-7' >
+              <div class='radio-inline'> 
+                 <input type="radio"  name="major" value="bachelor" checked="checked" />本科
+              </div>
+              <div class='radio-inline'> 
+
+               <input type="radio" name="major" value="master" />硕士
+              </div>
+
+              <div class='radio-inline'> 
+
+               <input type="radio" name="major" value="doctor" />博士
+              </div>
+
+            </div>
+          </div>
+
+          <div class='form-group'>
+          
+             <label class='col-xs-3 control-label' for='gradate'>毕业时间</label>
+            <div class='col-xs-7'>
+
+               <select id="gradate"  class='form-control' name = "gradate"  >
+               <option>2018</option>
+               <option>2017</option>
+               <option>2016</option>
+               <option>2015</option>
+               <option>2014</option>
+               <option>2013</option>
+              </select>
+            </div>     
+          </div>
+          <div class='form-group'>
+            <input type='hidden' name='_csrf' value='<%= csrf %>'/>
+
+            <div class='col-xs-offset-3 col-xs-7'>
+              <input type='submit' class='span-primary form-control' value='注册'/>
+            </div>
+          </div>
+        </form>
+        <% } %>
+      </div>
+    </div>    
   </div>
 </div>
+<script type="text/javascript">
+  $(function() {
+    $('.con li').on('click', function () {
+      var $thisparent = $(this).parents('.con');
+      var index = $thisparent.attr('id').substr(4);
+      $(this).addClass('select');
+      setTimeout(function(){
+        $thisparent.addClass('hidden');
+        $thisparent.next().removeClass('hidden');
+        $('.progressBarLabelInvalid:first').removeClass('progressBarLabelInvalid').addClass('progressBarLabel');
+      },300);
+    });
+  });
+</script>

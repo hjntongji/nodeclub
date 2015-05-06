@@ -10,9 +10,9 @@ var config = {
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-  name: 'myClub', // 俱乐部的名字
-  description: 'myClub: 俱乐部之家,麦卡布', // 俱乐部的的描述
-  keywords: 'nodejs, node, express, connect, socket.io',
+  name: '最盟', // 俱乐部的名字
+  description: '最盟: 上海高校运动联盟，以跑步为核心的跨校运动交流、分享平台，跑步信息发布、报名、志愿者招募，合作体育品牌和主办方的各种福利，结识上海十几所高校的跑者和NTCgirls，与全校已注册师生和校友一起互动、PK你的跑马成绩。最盟，不只运动，遇见感动！', // 俱乐部的的描述
+  keywords: '最盟,最猛,最萌,高校,拉风,跑步,运动,同济',
 
   // 添加到 html head 中的信息
   site_headers: [
