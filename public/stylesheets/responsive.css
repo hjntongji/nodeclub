@@ -132,7 +132,7 @@
 
   .form-horizontal .control-label {
       /* float: none; */
-      width: auto;
+      /* width: auto; */
       padding-top: 0;
       text-align: right;
   }
