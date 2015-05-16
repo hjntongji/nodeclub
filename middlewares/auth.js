@@ -89,7 +89,7 @@ exports.authWeixin = function (req, res, next) {
     if (!user) {
       var weixin = {};
       weixin.openid = 'default';
-      weixin.is_weixin_auth = '2';
+      weixin.is_weixin_auth = '1';
       gen_weixin_session(weixin, res);
       res.redirect(redirectInfoUrl);
       return;
@@ -109,7 +109,7 @@ exports.authWeixin = function (req, res, next) {
       var auth = auth_token.split('$$$$');
       var openid = auth[0].split('=')[1];
       var is_weixin_auth = auth[1].split('=')[1];
-      if (is_weixin_auth === '1') {
+      if (is_weixin_auth === '2') {
         var code = req.query.code;
         if (code) {
           console.log(code);
@@ -119,10 +119,10 @@ exports.authWeixin = function (req, res, next) {
           .query({appid: appid, secret: secret, code: code, grant_type: 'authorization_code'})
           .end(function(res){
             console.log(res);
-            var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
+            var User = UserProxy.getUserByWeixinOpenId(res.body.openid, ep.done('get_weixin'));
           });
         }
-      } else if (is_weixin_auth === '2') {
+      } else if (is_weixin_auth === '1') {
         var code = req.query.code;
         if (code) {
           console.log(code);
@@ -132,13 +132,15 @@ exports.authWeixin = function (req, res, next) {
           .end(function(res){
               superagent
               .get('https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN')
-              .query({access_token: res.access_token, openid: res.openid, lang: 'zh_CN'})
+              .query({access_token: res.body.access_token, openid: res.body.openid, lang: 'zh_CN'})
               .end(function(res){
                 console.log(res);
                 // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
               });
           });
         }
+      } else {
+        var code = req.query.code;
       }
       return next();
     }
