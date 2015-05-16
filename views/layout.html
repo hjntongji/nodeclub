@@ -25,32 +25,34 @@
   <link rel="icon" href="<%- staticFile(config.site_icon) %>" type="image/x-icon"/>
   <% } %>
 
-  <!-- style -->
+  <!-- style
+  .css('/public/stylesheets/jquery.atwho.css')
+  .css('/public/libs/editor/editor.css')
+  .css('/public/libs/webuploader/webuploader.css')
+  .css('/public/libs/code-prettify/prettify.css')
+  -->
   <%- Loader('/public/stylesheets/index.min.css')
   .css('/public/libs/bootstrap3/css/bootstrap.min.css')
   .css('/public/stylesheets/common.css')
   .css('/public/stylesheets/style.less')
   .css('/public/stylesheets/responsive.css')
-  .css('/public/stylesheets/jquery.atwho.css')
-  .css('/public/libs/editor/editor.css')
-  .css('/public/libs/webuploader/webuploader.css')
-  .css('/public/libs/code-prettify/prettify.css')
   .css('/public/libs/font-awesome/css/font-awesome.css')
   .css('/public/new/style.less')
   .done(assets, config.site_static_host, config.mini_assets)
   %>
 
-  <!-- scripts -->
-  <%- Loader('/public/index.min.js')
-  .js('/public/libs/jquery-2.1.0.js')
+  <!-- scripts 
   .js('/public/libs/lodash.compat.js')
   .js('/public/libs/jquery-ujs.js')
-  .js('/public/libs/bootstrap3/js/bootstrap.min.js')
   .js('/public/libs/jquery.caret.js')
   .js('/public/libs/jquery.atwho.js')
   .js('/public/libs/markdownit.js')
   .js('/public/libs/code-prettify/prettify.js')
   .js('/public/libs/qrcode.js')
+  -->
+  <%- Loader('/public/index.min.js')
+  .js('/public/libs/jquery-2.1.4.min.js')
+  .js('/public/libs/bootstrap3/js/bootstrap.min.js')
   .js('/public/javascripts/main.js')
   .js('/public/javascripts/responsive.js')
   .done(assets, config.site_static_host, config.mini_assets)
