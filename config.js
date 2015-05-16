@@ -56,7 +56,7 @@ var config = {
   weixin: {
     authorizeUrl: 'https://open.weixin.qq.com/connect/oauth2/authorize',
     appid: 'wx35ee7d6d83988da7',
-    secret: 'd74b37620ecaa50b8bc7d399c2eebe0f ',
+    secret: 'd74b37620ecaa50b8bc7d399c2eebe0f',
     redirectUri: 'http://m.zuimeng.org/signup'
   },
 
