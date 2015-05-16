@@ -44,7 +44,7 @@ var config = {
 
   session_secret: 'club_test_secret', // 务必修改
   auth_cookie_name: 'club_test',
-  auth_weixin_cookie_name: 'weixin_test',
+  auth_weixin_cookie_name: 'weixin',
 
   // 程序运行的端口
   port: 80,

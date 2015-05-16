@@ -52,7 +52,7 @@ function gen_session(user, res) {
 function gen_weixin_session (weixin, res) {
   var auth_token = 'openid=' + weixin.openid + '$$$$' + 'is_weixin_auth=' + weixin.is_weixin_auth; // 以后可能会存储更多信息，用 $$$$ 来分隔
   res.cookie(config.auth_weixin_cookie_name, auth_token,
-    {path: '/', signed: true, httpOnly: true});
+    {path: '/', signed: true, maxAge: 1000 * 60, httpOnly: true});
 }
 
 exports.gen_session = gen_session;
@@ -61,7 +61,7 @@ exports.gen_weixin_session = gen_weixin_session;
 function _gen_weixin_session (res) {
   weixin = {};
   weixin.openid = 'default';
-  weixin.is_weixin_auth = '1';
+  weixin.is_weixin_auth = '0';
   gen_weixin_session(weixin, res);
 }
 
@@ -109,7 +109,7 @@ exports.authWeixin = function (req, res, next) {
       var auth = auth_token.split('$$$$');
       var openid = auth[0].split('=')[1];
       var is_weixin_auth = auth[1].split('=')[1];
-      if (is_weixin_auth === '2') {
+      if (is_weixin_auth === '0') {
         var code = req.query.code;
         if (code) {
           console.log(code);
@@ -140,7 +140,9 @@ exports.authWeixin = function (req, res, next) {
           });
         }
       } else {
-        var code = req.query.code;
+        _gen_weixin_session(res);
+        res.redirect(redirectBaseUrl);
+        return;
       }
       return next();
     }
