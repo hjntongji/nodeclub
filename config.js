@@ -56,7 +56,7 @@ var config = {
   weixin: {
     authorizeUrl: 'https://open.weixin.qq.com/connect/oauth2/authorize',
     appid: 'wx35ee7d6d83988da7',
-    redirectUri: 'http://m.myclub.top/signup'
+    redirectUri: 'http://m.zuimeng.org/signup'
   },
 
 

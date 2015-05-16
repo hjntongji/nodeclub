@@ -310,12 +310,14 @@
       var index = $thisparent.attr('id').substr(4);
       $(this).addClass('select');
       setTimeout(function(){
-        $thisparent.fadeIn('100', function(){
+        $thisparent.fadeOut(200, function(){
           $(this).addClass('hidden');
-          $thisparent.next().fadeOut(800, function(){$(this).removeClass('hidden')});;
         });
-        
+        $thisparent.next().fadeIn(210, function(){
+          $(this).removeClass('hidden')
+        });
         $('.progressBarLabelInvalid:first').removeClass('progressBarLabelInvalid').addClass('progressBarLabel');
+        $('.progressBarBgValidShape').width(index * 3.5 + 'rem');
       },300);
     });
   });
