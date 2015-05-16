@@ -114,12 +114,9 @@ exports.authWeixin = function (req, res, next) {
         if (code) {
           var auth_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + secret + '&code=' + code + '&grant_type=authorization_code';
           superagent
-          .get(auth_url)
-          .set('Accept', 'application/json')
-          .end(function(authres){
-            console.log(authres);
-            // var User = UserProxy.getUserByWeixinOpenId(res.body.openid, ep.done('get_weixin'));
-          });
+            .get(auth_url, function(authres){
+              console.log(authres);
+            });
         }
       } else if (is_weixin_auth === '1') {
         var code = req.query.code;
