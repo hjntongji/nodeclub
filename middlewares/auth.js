@@ -115,6 +115,7 @@ exports.authWeixin = function (req, res, next) {
           var auth_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + secret + '&code=' + code + '&grant_type=authorization_code';
           superagent
           .get(auth_url)
+          .set('Accept', 'application/json')
           .end(function(authres){
             console.log(authres);
             // var User = UserProxy.getUserByWeixinOpenId(res.body.openid, ep.done('get_weixin'));
