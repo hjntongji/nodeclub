@@ -9,6 +9,9 @@ var UserSchema = new Schema({
   gradate: {type:String},
   edu: {type:String},
 
+  weixin_openid: {type: String},
+  weixin_iamge_url: {type: String},
+
   name: { type: String},
   loginname: { type: String},
   pass: { type: String },
@@ -78,6 +81,7 @@ UserSchema.virtual('isAdvanced').get(function () {
 
 UserSchema.index({loginname: 1}, {unique: true});
 UserSchema.index({email: 1}, {unique: true});
+UserSchema.index({weixin_openid: 1}, {unique: true});
 UserSchema.index({score: -1});
 UserSchema.index({githubId: 1});
 UserSchema.index({accessToken: 1});

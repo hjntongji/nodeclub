@@ -56,20 +56,21 @@ var config = {
   weixin: {
     authorizeUrl: 'https://open.weixin.qq.com/connect/oauth2/authorize',
     appid: 'wx35ee7d6d83988da7',
+    secret: 'd74b37620ecaa50b8bc7d399c2eebe0f ',
     redirectUri: 'http://m.zuimeng.org/signup'
   },
 
 
 
-  // RSS配置
-  rss: {
-    title: 'CNode：Node.js专业中文俱乐部的',
-    link: 'http://cnodejs.org',
-    language: 'zh-cn',
-    description: 'CNode：Node.js专业中文俱乐部的',
-    // 最多获取的RSS Item数量
-    max_rss_items: 50
-  },
+  // // RSS配置
+  // rss: {
+  //   title: 'CNode：Node.js专业中文俱乐部的',
+  //   link: 'http://cnodejs.org',
+  //   language: 'zh-cn',
+  //   description: 'CNode：Node.js专业中文俱乐部的',
+  //   // 最多获取的RSS Item数量
+  //   max_rss_items: 50
+  // },
 
   // 邮箱配置
   mail_opts: {

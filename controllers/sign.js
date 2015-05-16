@@ -14,6 +14,11 @@ exports.showSignup = function (req, res) {
   res.render('sign/signup');
 };
 
+exports.signupWithWeixin = function (req, res, next, openid) {
+  var ep = new eventproxy();
+};
+
+
 exports.signup = function (req, res, next) {
   var loginname = validator.trim(req.body.loginname).toLowerCase();
   var email = validator.trim(req.body.email).toLowerCase();

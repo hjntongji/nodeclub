@@ -18,6 +18,8 @@ exports.getUsersByNames = function (names, callback) {
   User.find({ loginname: { $in: names } }, callback);
 };
 
+
+
 /**
  * 根据登录名查找用户
  * Callback:
@@ -28,6 +30,18 @@ exports.getUsersByNames = function (names, callback) {
  */
 exports.getUserByLoginName = function (loginName, callback) {
   User.findOne({'loginname': loginName}, callback);
+};
+
+/**
+ * 根据微信openID，查找用户
+ * Callback:
+ * - err, 数据库异常
+ * - user, 用户
+ * @param {String} id 用户ID
+ * @param {Function} callback 回调函数
+ */
+exports.getUserByWeixinOpenId = function (openid, callback) {
+  User.findOne({weixin_openid: openid}, callback);
 };
 
 /**

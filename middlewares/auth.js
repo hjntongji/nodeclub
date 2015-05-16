@@ -5,6 +5,7 @@ var Message = require('../proxy').Message;
 var config = require('../config');
 var eventproxy = require('eventproxy');
 var UserProxy = require('../proxy').User;
+var superagent = require('superagent');
 
 /**
  * 需要管理员权限
@@ -59,8 +60,8 @@ exports.gen_weixin_session = gen_weixin_session;
 
 function _gen_weixin_session (res) {
   weixin = {};
-  weixin.openid = 'xx';
-  weixin.is_weixin_auth = true;
+  weixin.openid = 'default';
+  weixin.is_weixin_auth = '1';
   gen_weixin_session(weixin, res);
 }
 
@@ -78,15 +79,22 @@ exports.authWeixin = function (req, res, next) {
   // }
   var authorizeUrl = config.weixin.authorizeUrl;
   var appid = config.weixin.appid;
+  var secret = config.weixin.secret;
   var redirectUri = config.weixin.redirectUri;
-  var scope = 'snsapi_userinfo';
-  var redirectUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
+  var scope = 'snsapi_base';
+  var redirectBaseUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=' + scope + '&state=STATE#wechat_redirect';
+  var redirectInfoUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect';
   
-  ep.all('get_weixin', function (weixin) {
-    if (!weixin){
-      _gen_weixin_session(res);
-      res.redirect(redirectUrl);
+  ep.all('get_weixin', function (user) {
+    if (!user) {
+      var weixin = {};
+      weixin.openid = 'default';
+      weixin.is_weixin_auth = '2';
+      gen_weixin_session(weixin, res);
+      res.redirect(redirectInfoUrl);
+      return;
     }
+    next();
   });
 
   if (req.session.weixin) {
@@ -95,17 +103,41 @@ exports.authWeixin = function (req, res, next) {
     var auth_token = req.signedCookies[config.auth_weixin_cookie_name];
     if (!auth_token) {
       _gen_weixin_session(res);
-      res.redirect(redirectUrl);
+      res.redirect(redirectBaseUrl);
+      return;
     } else {
       var auth = auth_token.split('$$$$');
       var openid = auth[0].split('=')[1];
       var is_weixin_auth = auth[1].split('=')[1];
-      
-      if (openid && openid !== 'xx') {
-        console.log(openid);
-      } else if (is_weixin_auth || is_weixin_auth === 'true') {
-        console.log(is_weixin_auth);
-        console.log(req.code);
+      if (is_weixin_auth === '1') {
+        var code = req.query.code;
+        if (code) {
+          console.log(code);
+          superagent
+          .get('https://api.weixin.qq.com/sns/oauth2/access_token')
+          .query({appid: appid, secret: secret, code: code, grant_type: 'authorization_code'})
+          .end(function(res){
+            console.log(res);
+            var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
+          });
+        }
+      } else if (is_weixin_auth === '2') {
+        var code = req.query.code;
+        if (code) {
+          console.log(code);
+          superagent
+          .get('https://api.weixin.qq.com/sns/oauth2/access_token')
+          .query({appid: appid, secret: secret, code: code, grant_type: 'authorization_code'})
+          .end(function(res){
+              superagent
+              .get('https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN')
+              .query({access_token: res.access_token, openid: res.openid, lang: 'zh_CN'})
+              .end(function(res){
+                console.log(res);
+                // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
+              });
+          });
+        }
       }
       return next();
     }
