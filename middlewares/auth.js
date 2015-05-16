@@ -112,11 +112,17 @@ exports.authWeixin = function (req, res, next) {
       if (is_weixin_auth === '0') {
         var code = req.query.code;
         if (code) {
-          var auth_url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + secret + '&code=' + code + '&grant_type=authorization_code';
+          console.log('https://api.weixin.qq.com/sns/oauth2/access_token?appid=' + appid + '&secret=' + secret + '&code=' + code + '&grant_type=authorization_code');
           superagent
-            .get(auth_url, function(authres){
-              console.log(authres);
-            });
+          .get('https://api.weixin.qq.com/sns/oauth2/access_token')
+          .query({appid: appid, secret: secret, code: code, grant_type: 'authorization_code'})
+          .end(function(err, res){
+            if(err){
+              return console.log(err);
+            }
+            console.log(res);
+            // var User = UserProxy.getUserByWeixinOpenId(res.body.openid, ep.done('get_weixin'));
+          });
         }
       } else if (is_weixin_auth === '1') {
         var code = req.query.code;
