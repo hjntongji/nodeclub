@@ -102,7 +102,6 @@ exports.authWeixin = function (req, res, next) {
                 return console.log(err);
               }
               auth = JSON.parse(authRes.text);
-              console.log(authRes);
               superagent
               .get('https://api.weixin.qq.com/sns/userinfo')
               .query({access_token: auth.access_token, openid: auth.openid, lang: 'zh_CN'})
@@ -112,6 +111,7 @@ exports.authWeixin = function (req, res, next) {
                 }
                 auth = JSON.parse(infoRes.text);
                 console.log(auth);
+                next();
                 // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
               });
           });
