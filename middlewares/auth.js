@@ -122,8 +122,8 @@ exports.authWeixin = function (req, res, next) {
               return console.log(err);
             }
             console.log(authRes);
-            console.log(authRes.body);
-            // var User = UserProxy.getUserByWeixinOpenId(res.body.openid, ep.done('get_weixin'));
+            auth = JSON.parse(authRes.text);
+            var User = UserProxy.getUserByWeixinOpenId(auth.openid, ep.done('get_weixin'));
           });
         }
       } else if (is_weixin_auth === '1') {
@@ -133,12 +133,21 @@ exports.authWeixin = function (req, res, next) {
           superagent
           .get('https://api.weixin.qq.com/sns/oauth2/access_token')
           .query({appid: appid, secret: secret, code: code, grant_type: 'authorization_code'})
-          .end(function(res){
+          .end(function(err, authRes){
+              if(err){
+                return console.log(err);
+              }
+              console.log(authRes);
+              auth = JSON.parse(authRes.text);
               superagent
-              .get('https://api.weixin.qq.com/sns/userinfo?access_token=ACCESS_TOKEN&openid=OPENID&lang=zh_CN')
-              .query({access_token: res.body.access_token, openid: res.body.openid, lang: 'zh_CN'})
-              .end(function(res){
-                console.log(res);
+              .get('https://api.weixin.qq.com/sns/userinfo')
+              .query({access_token: auth.access_token, openid: auth.openid, lang: 'zh_CN'})
+              .end(function(err, infoRes){
+                if(err){
+                  return console.log(err);
+                }
+                auth = JSON.parse(infoRes.text);
+                console.log(auth);
                 // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
               });
           });
