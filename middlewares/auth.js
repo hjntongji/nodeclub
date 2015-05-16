@@ -66,7 +66,7 @@ exports.authWeixin = function (req, res, next) {
     if (!user) {
       return res.redirect(redirectInfoUrl);
     }
-    next();
+    return next();
   });
 
   if (req.session.weixin) {
