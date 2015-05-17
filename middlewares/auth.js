@@ -58,7 +58,6 @@ exports.authWeixin = function (req, res, next) {
   var appid = config.weixin.appid;
   var secret = config.weixin.secret;
   var redirectUri = config.weixin.redirectUri;
-  var scope = 'snsapi_base';
   var redirectBaseUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=snsapi_base&state=0#wechat_redirect';
   var redirectInfoUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
   
@@ -112,7 +111,7 @@ exports.authWeixin = function (req, res, next) {
                 }
                 auth = JSON.parse(infoRes.text);
                 console.log(auth);
-                UserProxy.newAndSaveWeixin(openid, auth, ep.done('get_weixin'));
+                UserProxy.newAndSaveWeixin(auth, ep.done('get_weixin'));
                 // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
               });
           });

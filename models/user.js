@@ -59,7 +59,7 @@ var UserSchema = new Schema({
 });
 
 UserSchema.virtual('avatar_url').get(function () {
-  var url = this.avatar || ('https://gravatar.com/avatar/' + utility.md5(this.email.toLowerCase()) + '?size=48');
+  // var url = this.avatar || ('https://gravatar.com/avatar/' + utility.md5(this.email.toLowerCase()) + '?size=48');
 
   // www.gravatar.com 被墙
   // url = url.replace('//www.gravatar.com', '//gravatar.com');
@@ -70,13 +70,20 @@ UserSchema.virtual('avatar_url').get(function () {
   // }
 
   // 如果是 github 的头像，则限制大小
-  if (url.indexOf('githubusercontent') !== -1) {
-    url += '&s=120';
-  }
+  // if (url.indexOf('githubusercontent') !== -1) {
+  //   url += '&s=120';
+  // }
 
   // 通过服务器代理访问
-  url = '/agent?url=' + encodeURIComponent(url);
-
+  if (this.weixin_headimgurl) {
+    url = weixin_headimgurl;
+  } 
+  // else if (!this.weixin_sex) {
+  //   url = '/public/images/headimage.png'
+  // }
+  else {
+    url = '/public/images/man.jpg'
+  }
   return url;
 });
 

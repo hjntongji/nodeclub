@@ -106,9 +106,9 @@ exports.getUserByNameAndKey = function (loginname, key, callback) {
   User.findOne({loginname: loginname, retrieve_key: key}, callback);
 };
 
-exports.newAndSaveWeixin = function(openid, userinfo, callback) {
+exports.newAndSaveWeixin = function(userinfo, callback) {
   var user = new User();
-  user.weixin_openid = openid;
+  user.weixin_openid = userinfo.openid;
   user.weixin_headimgurl = userinfo.headimgurl;
   user.weixin_nickname = userinfo.nickname;
   user.weixin_sex = userinfo.sex;
