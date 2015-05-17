@@ -120,11 +120,10 @@ exports.newAndSaveWeixin = function(userinfo, callback) {
   user.save(callback);
 }
 
-exports.newAndSave = function (university, loginname, phone, email, major, edu ,gradate, callback) {
-  var user = new User();
+exports.newAndSave = function (user, university, name, phone, email, major, edu ,gradate, callback) {
+  var user = new User(user);
   user.university=university;
-  user.name = loginname;
-  user.loginname = loginname;
+  user.name = name;
   user.phone = phone;
   user.email = email;
   user.major = major;

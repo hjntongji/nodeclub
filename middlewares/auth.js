@@ -65,7 +65,7 @@ exports.authWeixin = function (req, res, next) {
     if (!user) {
       return res.redirect(redirectInfoUrl);
     }
-    console.log(user);
+    req.session.user = new UserModel(user);
     next();
   });
 
