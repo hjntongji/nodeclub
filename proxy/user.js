@@ -111,6 +111,7 @@ exports.newAndSaveWeixin = function(userinfo, callback) {
   user.weixin_openid = userinfo.openid;
   user.weixin_headimgurl = userinfo.headimgurl;
   user.weixin_nickname = userinfo.nickname;
+  user.loginname = userinfo.nickname;
   user.weixin_sex = userinfo.sex;
   user.weixin_language = userinfo.language;
   user.weixin_city = userinfo.city;
