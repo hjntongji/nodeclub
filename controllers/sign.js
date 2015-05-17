@@ -67,7 +67,14 @@ exports.signup = function (req, res, next) {
     if (err) {
       return next(err);
     }
-    User.newAndSave(user, university, name, phone, email, major, edu ,gradate, function (err) {
+    user.university=university;
+    user.name = name;
+    user.phone = phone;
+    user.email = email;
+    user.major = major;
+    user.edu = edu;
+    user.gradate = gradate;
+    user.save(function (err) {
       if (err) {
         return next(err);
       }
