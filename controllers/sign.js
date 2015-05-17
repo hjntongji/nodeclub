@@ -33,7 +33,7 @@ exports.signup = function (req, res, next) {
   ep.fail(next);
   ep.on('prop_err', function (msg) {
     res.status(422);
-    res.render('sign/signup', {error: msg, loginname: loginname, email: email});
+    res.render('sign/signupweixin', {error: msg, name: name, email: email});
   });
 
   // 验证信息的正确性
@@ -79,7 +79,7 @@ exports.signup = function (req, res, next) {
         return next(err);
       }
       mail.sendActiveMail(email, utility.md5(email + config.session_secret), name);
-      res.render('sign/signup', {
+      res.render('sign/signupweixin', {
         success: '欢迎加入 ' + config.name + '！我们已给您的注册邮箱发送了一封邮件，请点击里面的链接来激活您的帐号。'
       });
     });
