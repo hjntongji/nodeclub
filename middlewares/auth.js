@@ -58,7 +58,7 @@ exports.authWeixin = function (req, res, next) {
   var appid = config.weixin.appid;
   var secret = config.weixin.secret;
   var redirectUri = config.weixin.redirectUri;
-  var redirectBaseUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent('http://m.zuimeng.org/' + req.originalUrl) + '&response_type=code&scope=snsapi_base&state=0#wechat_redirect';
+  var redirectBaseUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent('http://m.zuimeng.org' + req.originalUrl) + '&response_type=code&scope=snsapi_base&state=0#wechat_redirect';
   var redirectInfoUrl = authorizeUrl + '?appid=' + appid + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect';
   
   ep.all('get_weixin', function (user) {
