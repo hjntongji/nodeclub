@@ -46,7 +46,7 @@ exports.signup = function (req, res, next) {
     return ep.emit('prop_err', '邮箱不合法。');
   }
   
-  if (!(validator.isNumeric(phone)&&validator.isLength(phone, 11, 11)) {
+  if (!(validator.isNumeric(phone)&&validator.isLength(phone, 11, 11))) {
     return ep.emit('prop_err', '手机号码不合法');
   }
   // END 验证信息的正确性
