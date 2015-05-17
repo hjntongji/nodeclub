@@ -121,7 +121,7 @@ exports.newAndSaveWeixin = function(userinfo, callback) {
 }
 
 exports.newAndSave = function (user, university, name, phone, email, major, edu ,gradate, callback) {
-  var user = new User(user);
+  var user = User.findOne({weixin_openid: user.openid});
   user.university=university;
   user.name = name;
   user.phone = phone;
