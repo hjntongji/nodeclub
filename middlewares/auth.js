@@ -69,8 +69,8 @@ exports.authWeixin = function (req, res, next) {
     next();
   });
 
-  if (req.session.weixin) {
-    ep.emit('get_weixin', req.session.weixin);
+  if (req.session.user) {
+    ep.emit('get_weixin', req.session.user);
   } else {
     var state = req.query.state;
     if (state === '0') {
