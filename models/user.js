@@ -10,7 +10,13 @@ var UserSchema = new Schema({
   edu: {type:String},
 
   weixin_openid: {type: String},
-  weixin_iamge_url: {type: String},
+  weixin_headimgurl: {type: String},
+  weixin_nickname: {type: String},
+  weixin_sex: {type: String},
+  weixin_language: {type: String},
+  weixin_city: {type: String},
+  weixin_province: {type: String},
+  weixin_country: {type: String},
 
   name: { type: String},
   loginname: { type: String},

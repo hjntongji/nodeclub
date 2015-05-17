@@ -66,6 +66,7 @@ exports.authWeixin = function (req, res, next) {
     if (!user) {
       return res.redirect(redirectInfoUrl);
     }
+    console.log(user);
     next();
   });
 
@@ -111,7 +112,7 @@ exports.authWeixin = function (req, res, next) {
                 }
                 auth = JSON.parse(infoRes.text);
                 console.log(auth);
-                next();
+                UserProxy.newAndSaveWeixin(openid, auth, ep.done('get_weixin'));
                 // var User = UserProxy.getUserByWeixinOpenId(openid, ep.done('get_weixin'));
               });
           });

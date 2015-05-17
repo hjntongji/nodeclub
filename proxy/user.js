@@ -106,6 +106,18 @@ exports.getUserByNameAndKey = function (loginname, key, callback) {
   User.findOne({loginname: loginname, retrieve_key: key}, callback);
 };
 
+exports.newAndSaveWeixin = function(openid, userinfo, callback) {
+  var user = new User();
+  user.weixin_openid = openid;
+  user.weixin_headimgurl = userinfo.headimgurl;
+  user.weixin_nickname = userinfo.nickname;
+  user.weixin_sex = userinfo.sex;
+  user.weixin_language = userinfo.language;
+  user.weixin_city = userinfo.city;
+  user.weixin_province = userinfo.province;
+  user.weixin_country = userinfo.country;
+  user.save(callback);
+}
 
 exports.newAndSave = function (university, loginname, phone, email, major, edu ,gradate, callback) {
   var user = new User();
