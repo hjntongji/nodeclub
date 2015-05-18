@@ -16,8 +16,8 @@ var utility = require('utility');
 var _ = require('lodash');
 
 exports.index = function (req, res, next) {
-  var user_name = req.params.name;
-  User.getUserByLoginName(user_name, function (err, user) {
+  var weixin_openid = req.params.weixin_openid;
+  User.getUserByWeixinOpenId(weixin_openid, function (err, user) {
     if (err) {
       return next(err);
     }
@@ -44,7 +44,7 @@ exports.index = function (req, res, next) {
         recent_topics: recent_topics,
         recent_replies: recent_replies,
         token: token,
-        pageTitle: util.format('@%s 的个人主页', user.loginname),
+        pageTitle: util.format('@%s 的个人主页', user.weixin_nickname),
       });
     };
 
