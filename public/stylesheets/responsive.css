@@ -95,7 +95,7 @@
   }
 
   #content .last_time img {
-      display: none;
+      display: inline-block;
   }
 
   #content .reply_count {
@@ -164,4 +164,3 @@
     margin-top: 0;
   }
 }
-
