@@ -6,6 +6,11 @@ exports.about = function (req, res, next) {
     pageTitle: '关于我们'
   });
 };
+exports.redirect = function (req, res, next) {
+  res.render('static/redirect', {
+    pageTitle: '注册'
+  });
+};
 
 // FAQ
 exports.faq = function (req, res, next) {

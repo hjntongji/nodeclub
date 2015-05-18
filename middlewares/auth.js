@@ -28,7 +28,7 @@ exports.userRequired = function (req, res, next) {
     return res.status(403).send('forbidden!');
   } 
   if (!req.session.user.name || req.session.user.name === '') {
-    return res.redirect('/signup');
+    return res.redirect('/redirect');
   }
   next();
 };
