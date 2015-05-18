@@ -90,7 +90,7 @@ app.use(session({
 app.use(passport.initialize());
 
 // custom middleware
-// app.use(auth.authWeixin);
+app.use(auth.authWeixin);
 app.use(auth.authUser);
 app.use(auth.blockUser());
 

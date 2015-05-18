@@ -1,7 +1,7 @@
 <div class='cell'>
 
   <a class="user_avatar pull-left" href="/user/<%= topic.author.loginname %>">
-    <img src="<%= topic.author.avatar_url %>"
+    <img src="<%= topic.author.weixin_headimgurl %>"
          title="<%= topic.author.loginname %>"
             />
   </a>
@@ -18,7 +18,7 @@
 
   <% if (topic.reply && topic.reply.author) {%>
   <a class='last_time pull-right' href="/topic/<%= topic._id %><%- '#' + topic.reply._id %>">
-    <img class="user_small_avatar" src="<%= topic.reply.author.avatar_url %>">
+    <img class="user_small_avatar" src="<%= topic.reply.author.weixin_headimgurl %>">
     <span class="last_active_time"><%= topic.reply.friendly_create_at %></span>
   </a>
   <% } %>
