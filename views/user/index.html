@@ -67,22 +67,10 @@
             <a class='dark' href="<%= user.university %>" target='_blank'><%= user.university %></a>
           </li>
           <% } %>
-          <% if (user.country) { %>
+          <% if (user.weixin_country) { %>
           <li>
             <i class="fa fa-lg fa-fw fa-twitter"></i>
-            <a class='dark' href="<%= user.country %>" target='_blank'><%= user.country %></a>
-          </li>
-          <% } %>
-          <% if (user.province) { %>
-          <li>
-            <i class="fa fa-lg fa-fw fa-twitter"></i>
-            <a class='dark' href="<%= user.province %>" target='_blank'><%= user.province %></a>
-          </li>
-          <% } %>
-          <% if (user.city) { %>
-          <li>
-            <i class="fa fa-lg fa-fw fa-twitter"></i>
-            <a class='dark' href="<%= user.city %>" target='_blank'><%= user.city %></a>
+            <a class='dark' href="<%= user.weixin_country %>" target='_blank'>@<%= user.weixin_country %> · <%= user.weixin_province %> · <%= user.weixin_city %></a>
           </li>
           <% } %>
         </ul>
