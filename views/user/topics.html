@@ -5,16 +5,16 @@
     <div class='header'>
       <ul class='breadcrumb'>
         <li><a href='/'>主页</a><span class='divider'>/</span></li>
-        <li class='active'><a href="/user/<%=user.loginname%>"><%=user.loginname%>的主页</a></li>
+        <li class='active'><a href="/user/<%=user.weixin_openid%>"><%=user.weixin_nickname%>的主页</a></li>
       </ul>
     </div>
   </div>
   <div class='panel'>
-    <div class="header"><%=user.loginname%> 创建的话题</div>
+    <div class="header"><%=user.weixin_nickname%> 创建的话题</div>
     <div class="inner padding">
     <% if(typeof(topics) !== 'undefined' && topics.length > 0 ){ %>
     <%- partial('../topic/list',
-    {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.loginname+'/topics'}) %>
+    {topics:topics,pages:pages,current_pages:current_page,base:'/user/'+user.weixin_openid+'/topics'}) %>
     <% }else{ %>
     <div class='inner'>
       <p>无话题</p>

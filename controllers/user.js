@@ -191,8 +191,8 @@ exports.toggle_star = function (req, res, next) {
 };
 
 exports.get_collect_topics = function (req, res, next) {
-  var name = req.params.name;
-  User.getUserByLoginName(name, function (err, user) {
+  var weixin_openid = req.params.weixin_openid;
+  User.getUserByWeixinOpenId(weixin_openid, function (err, user) {
     if (err || !user) {
       return next(err);
     }
@@ -249,11 +249,11 @@ exports.top100 = function (req, res, next) {
 };
 
 exports.list_topics = function (req, res, next) {
-  var user_name = req.params.name;
+  var weixin_openid = req.params.weixin_openid;
   var page = Number(req.query.page) || 1;
   var limit = config.list_topic_count;
 
-  User.getUserByLoginName(user_name, function (err, user) {
+  User.getUserByWeixinOpenId(weixin_openid, function (err, user) {
     if (!user) {
       res.render('notify/notify', {error: '这个用户不存在。'});
       return;
@@ -285,11 +285,11 @@ exports.list_topics = function (req, res, next) {
 };
 
 exports.list_replies = function (req, res, next) {
-  var user_name = req.params.name;
+  var weixin_openid = req.params.weixin_openid;
   var page = Number(req.query.page) || 1;
   var limit = 50;
 
-  User.getUserByLoginName(user_name, function (err, user) {
+  User.getUserByWeixinOpenId(weixin_openid, function (err, user) {
     if (!user) {
       res.render('notify/notify', {error: '这个用户不存在。'});
       return;
@@ -328,13 +328,13 @@ exports.list_replies = function (req, res, next) {
 };
 
 exports.block = function (req, res, next) {
-  var loginname = req.params.name;
+  var weixin_openid = req.params.weixin_openid;
   var action = req.body.action;
 
   var ep = EventProxy.create();
   ep.fail(next);
 
-  User.getUserByLoginName(loginname, ep.done(function (user) {
+  User.getUserByWeixinOpenId(weixin_openid, ep.done(function (user) {
     if (!user) {
       return next(new Error('user is not exists'));
     }
@@ -357,12 +357,12 @@ exports.block = function (req, res, next) {
 };
 
 exports.deleteAll = function (req, res, next) {
-  var loginname = req.params.name;
+  var weixin_openid = req.params.weixin_openid;
 
   var ep = EventProxy.create();
   ep.fail(next);
 
-  User.getUserByLoginName(loginname, ep.done(function (user) {
+  User.getUserByWeixinOpenId(weixin_openid, ep.done(function (user) {
     if (!user) {
       return next(new Error('user is not exists'));
     }

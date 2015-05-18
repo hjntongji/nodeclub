@@ -9,16 +9,16 @@
     </div>
     <div class='inner userinfo'>
       <div class='user_big_avatar'>
-        <img src="<%= user.avatar_url %>" class="user_avatar" title="<%= user.loginname %>"/>
+        <img src="<%= user.weixin_headimgurl %>" class="user_avatar" title="<%= user.weixin_nickname %>"/>
       </div>
-      <a class='dark'><%= user.loginname %></a>
+      <a class='dark'><%= user.weixin_nickname %></a>
 
       <div class='user_profile'>
         <ul class='unstyled'>
           <span class='big'><%= user.score %></span> 积分
           <% if (user.collect_topic_count) {%>
           <li>
-            <a class='dark' href="/user/<%= user.loginname %>/collections" target='_blank'>
+            <a class='dark' href="/user/<%= user.weixin_openid %>/collections" target='_blank'>
               <span class='big collect-topic-count'><%= user.collect_topic_count %></span>话题收藏
             </a>
           </li>
@@ -70,7 +70,7 @@
       <br/><br/>
       Email (Seen by Administrator): <a href="mailto:<%= user.email %>"><%= user.email %></a>
       <% if (!user.active) { %>
-      <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.loginname %>"
+      <a href="/active_account?key=<%- typeof(token) !== 'undefined' && token %>&name=<%= user.weixin_nickname %>"
          target="_blank">
          <span class="span-common">
            激活账号
@@ -88,7 +88,7 @@
     <% if (typeof(recent_topics) !== 'undefined' && recent_topics.length > 0) { %>
     <%- partial('../topic/abstract', { collection: recent_topics, as: 'topic' }) %>
     <div class='cell more'>
-      <a class='dark' href="/user/<%= user.loginname %>/topics">查看更多»</a>
+      <a class='dark' href="/user/<%= user.weixin_openid %>/topics">查看更多»</a>
     </div>
     <% } else { %>
     <div class='inner'>
@@ -104,7 +104,7 @@
     <% if (typeof(recent_replies) !== 'undefined' && recent_replies.length > 0) { %>
     <%- partial('../topic/abstract', { collection: recent_replies, as: 'topic' }) %>
     <div class='cell more'>
-      <a class='dark' href="/user/<%= user.loginname %>/replies">查看更多»</a>
+      <a class='dark' href="/user/<%= user.weixin_openid %>/replies">查看更多»</a>
     </div>
     <% } else { %>
     <div class='inner'>
@@ -147,7 +147,7 @@
       if (action === 'set_block' && !confirm('确定要屏蔽该用户吗？')) {
         return;
       }
-      $.post('/user/<%- user.loginname %>/block', params, function (data) {
+      $.post('/user/<%- user.weixin_openid %>/block', params, function (data) {
         if (data.status === 'success') {
           if (action === 'set_block') {
             $me.html('取消屏蔽用户');
@@ -168,7 +168,7 @@
       if (!confirm('确定要删除吗？（不会永久删除，只做标记位）')) {
         return;
       }
-      $.post('/user/<%- user.loginname %>/delete_all', params, function (data) {
+      $.post('/user/<%- user.weixin_openid %>/delete_all', params, function (data) {
         if (data.status === 'success') {
           alert('操作成功');
         }
