@@ -49,6 +49,42 @@
             <a class='dark' href="<%= user.weibo %>" target='_blank'><%= user.weibo %></a>
           </li>
           <% } %>
+          <% if (user.name) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.name %>" target='_blank'><%= user.name %></a>
+          </li>
+          <% } %>
+          <% if (user.edu) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.edu %>" target='_blank'><%= user.edu %></a>
+          </li>
+          <% } %>
+          <% if (user.university) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.university %>" target='_blank'><%= user.university %></a>
+          </li>
+          <% } %>
+          <% if (user.country) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.country %>" target='_blank'><%= user.country %></a>
+          </li>
+          <% } %>
+          <% if (user.province) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.province %>" target='_blank'><%= user.province %></a>
+          </li>
+          <% } %>
+          <% if (user.city) { %>
+          <li>
+            <i class="fa fa-lg fa-fw fa-twitter"></i>
+            <a class='dark' href="<%= user.city %>" target='_blank'><%= user.city %></a>
+          </li>
+          <% } %>
         </ul>
       </div>
       <p class='col_fade'>注册时间 <%= user.friendly_create_at %></p>
