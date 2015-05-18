@@ -4,11 +4,11 @@
   <a class="anchor" id="<%= reply._id %>"></a>
 
   <div class='author_content'>
-    <a href="/user/<%= reply.author.loginname %>" class="user_avatar">
-      <img src="<%= reply.author.avatar_url %>" title="<%= reply.author.loginname %>"/></a>
+    <a href="/user/<%= reply.author.weixin_openid %>" class="user_avatar">
+      <img src="<%= reply.author.weixin_headimgurl %>" title="<%= reply.author.weixin_nickname %>"/></a>
 
     <div class='user_info'>
-      <a class='dark reply_author' href="/user/<%= reply.author.loginname %>"><%= reply.author.loginname %>
+      <a class='dark reply_author' href="/user/<%= reply.author.weixin_openid %>"><%= reply.author.weixin_nickname %>
       </a>
       <a class="reply_time" href="#<%= reply._id %>"><%= indexInCollection + 1 %>楼•<%= reply.friendly_create_at
         %></a>
