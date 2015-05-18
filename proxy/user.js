@@ -120,17 +120,18 @@ exports.newAndSaveWeixin = function(userinfo, callback) {
   user.save(callback);
 }
 
-exports.newAndSave = function (user, university, name, phone, email, major, edu ,gradate, callback) {
-  var user = User.findOne({weixin_openid: user.weixin_openid});
-  user.university=university;
-  user.name = name;
-  user.phone = phone;
+exports.newAndSave = function (name, loginname, pass, email, avatar_url, active, callback) {
+  var user = new User();
+  user.name = loginname;
+  user.loginname = loginname;
+  user.pass = pass;
   user.email = email;
-  user.major = major;
-  user.edu = edu;
-  user.gradate = gradate;
+  user.avatar = avatar_url;
+  user.active = active || false;
+  user.accessToken = uuid.v4();
   user.save(callback);
 };
+
 
 var makeGravatar = function (email) {
   return 'http://www.gravatar.com/avatar/' + utility.md5(email.toLowerCase()) + '?size=48';
