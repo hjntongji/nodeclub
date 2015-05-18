@@ -52,18 +52,18 @@ router.get('/reset_pass', sign.reset_pass);  // 进入重置密码页面
 router.post('/reset_pass', sign.update_pass);  // 更新密码
 
 // user controller
-router.get('/user/:name', user.index); // 用户个人主页
+router.get('/user/:weixin_openid', user.index); // 用户个人主页
 router.get('/setting', auth.userRequired, user.showSetting); // 用户个人设置页
 router.post('/setting', auth.userRequired, user.setting); // 提交个人信息设置
 router.get('/stars', user.show_stars); // 显示所有达人列表页
 router.get('/users/top100', user.top100);  // 显示积分前一百用户页
-router.get('/user/:name/collections', user.get_collect_topics);  // 用户收藏的所有话题页
-router.get('/user/:name/topics', user.list_topics);  // 用户发布的所有话题页
-router.get('/user/:name/replies', user.list_replies);  // 用户参与的所有回复页
+router.get('/user/:weixin_openid/collections', user.get_collect_topics);  // 用户收藏的所有话题页
+router.get('/user/:weixin_openid/topics', user.list_topics);  // 用户发布的所有话题页
+router.get('/user/:weixin_openid/replies', user.list_replies);  // 用户参与的所有回复页
 router.post('/user/set_star', auth.adminRequired, user.toggle_star); // 把某用户设为达人
 router.post('/user/cancel_star', auth.adminRequired, user.toggle_star);  // 取消某用户的达人身份
-router.post('/user/:name/block', auth.adminRequired, user.block);  // 禁言某用户
-router.post('/user/:name/delete_all', auth.adminRequired, user.deleteAll);  // 删除某用户所有发言
+router.post('/user/:weixin_openid/block', auth.adminRequired, user.block);  // 禁言某用户
+router.post('/user/:weixin_openid/delete_all', auth.adminRequired, user.deleteAll);  // 删除某用户所有发言
 
 // message controler
 router.get('/my/messages', auth.userRequired, message.index); // 用户个人的所有消息页
