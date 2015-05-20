@@ -1,4 +1,4 @@
-<div id="content" style="min-height: 800px;">
+<div id="content">
   <div class="panel">
     <div class="header">
       <% [['all', '全部']].concat(tabs).forEach(function (pair) {
@@ -23,7 +23,11 @@
           </div>
         <% } else { %>
           <div class="swiper-slide">
-            <p>无话题</p>
+            <div id="topic_list">
+              <div class='cell'>
+                <span>本模块暂无话题，欢迎发布话题，抢占前排！</span>
+              </div>
+            </div>
           </div>
         <% } %>
         <div class="swiper-slide">
@@ -61,7 +65,7 @@
 </script>
 <div id="foot-content">
   <div class='inner'>
-    <a href='/topic/create' id='create_topic_btn'>
+    <a href='/topic/create/?tab=<%tab%>' id='create_topic_btn'>
       <span class='span-success'>发布话题</span>
     </a>
   </div>
