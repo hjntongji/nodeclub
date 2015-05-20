@@ -28,26 +28,34 @@
         <form id='create_topic_form' action='/topic/create' method='post'>
           <% } %>
           <fieldset>
-            <span class="tab-selector">选择版块：</span>
-            <select name="tab" id="tab-value">
-              <option value="">请选择</option>
-              <%
-              var tabValue = '';
-              if (typeof(tab) !== 'undefined') {
-                tabValue = tab;
-              }
-              tabs.forEach(function (pair) {
-                var value = pair[0];
-                var text = pair[1];
-                %>
-                <option value="<%=value%>" <%= tabValue === value ? 'selected': '' %>><%=text%></option>
-
-              <%});%>
-            </select>
+            <div class="row">
+              <span class="tab-selector col-xs-1" style="width:85px;padding-right:0;margin-right:0">选择版块：</span>
+              <div class="tab-buttons col-xs-8">
+                <%
+                var tabValue = '';
+                if (typeof(tab) !== 'undefined') {
+                  tabValue = tab;
+                }
+                tabs.forEach(function (pair) {
+                  var value = pair[0];
+                  var text = pair[1];
+                  %>
+                  <button type="button" name="tab" class="btn <%= tabValue === value ? 'btn-primary': 'btn-default' %>" value="<%=value%>" > <%=text%> </button>
+                <%});%>
+                <input type='hidden' name="tab" value = '<%tabValue%>'>
+              </div>
+            </div>
+       
             <span id="topic_create_warn"></span>
-            <textarea autofocus class='span9' id='title' name='title' rows='1'
-                      placeholder="标题字数 10 字以上"
-                    ><%= typeof(title) !== 'undefined' && title || '' %></textarea>
+            <div class="row">
+              <span class='control-label col-xs-1' style="width:85px;padding-right:0;margin-right:0">标题：</span>
+              <div class="col-xs-8">
+                <input autofocus class='form-control' id='title' name='title' rows='1'
+                        placeholder="标题字数" value="<%= typeof(title) !== 'undefined' && title || '' %>"
+                      required>
+              </div>
+            </div>
+            
 
             <div class='markdown_editor in_editor'>
               <div class='markdown_in_editor'>
@@ -86,13 +94,18 @@
 
     // 版块选择的检查，必须选择
     $('#create_topic_form').on('submit', function (e) {
-      var tabValue = $('#tab-value').val();
+      var tabValue = $('button[name="tab"].btn-primary').val();
+      $('input[name="tab"]').val(tabValue);
       if (!tabValue) {
         alert('必须选择一个版块！');
         $('.submit_btn').button('reset');
         $('.tab-selector').css('color', 'red');
         return false;
       }
+    });
+    $('button[name="tab"]').on('click', function(){
+      $('button[name="tab"').removeClass('btn-primary').addClass('btn-default');
+      $(this).addClass('btn-primary').removeClass("btn-default");
     });
     // END 版块选择的检查，必须选择
 

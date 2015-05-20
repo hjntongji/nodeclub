@@ -100,7 +100,8 @@ exports.index = function (req, res, next) {
 
 exports.create = function (req, res, next) {
   res.render('topic/edit', {
-    tabs: config.tabs
+    tabs: config.tabs,
+    tab: req.query.tab
   });
 };
 
