@@ -108,6 +108,7 @@ if (!config.debug) {
   app.set('view cache', true);
 }
 
+
 // for debug
 // app.get('/err', function (req, res, next) {
 //   next(new Error('haha'))
