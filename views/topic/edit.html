@@ -32,7 +32,7 @@
               <span class="tab-selector col-xs-1" style="width:85px;padding-right:0;margin-right:0">选择版块：</span>
               <div class="tab-buttons col-xs-8">
                 <%
-                var tabValue = '';
+                var tabValue = 'run';
                 if (typeof(tab) !== 'undefined') {
                   tabValue = tab;
                 }
@@ -89,6 +89,10 @@
 %>
 <script>
   (function () {
+    $('button[name="tab"]').on('click', function(){
+      $('button[name="tab"').removeClass('btn-primary').addClass('btn-default');
+      $(this).addClass('btn-primary').removeClass("btn-default");
+    });
     var editor = new Editor();
     editor.render($('.editor')[0]);
 
@@ -103,10 +107,7 @@
         return false;
       }
     });
-    $('button[name="tab"]').on('click', function(){
-      $('button[name="tab"').removeClass('btn-primary').addClass('btn-default');
-      $(this).addClass('btn-primary').removeClass("btn-default");
-    });
+    
     // END 版块选择的检查，必须选择
 
     // 选择招聘版块时，给出提示
