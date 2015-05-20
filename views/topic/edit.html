@@ -33,7 +33,7 @@
               <div class="tab-buttons col-xs-8">
                 <%
                 var tabValue = 'run';
-                if (typeof(tab) !== 'undefined') {
+                if (typeof(tab) !== 'undefined' && tab !== 'all') {
                   tabValue = tab;
                 }
                 tabs.forEach(function (pair) {
@@ -90,7 +90,7 @@
 <script>
   (function () {
     $('button[name="tab"]').on('click', function(){
-      $('button[name="tab"').removeClass('btn-primary').addClass('btn-default');
+      $('button[name="tab"]').removeClass('btn-primary').addClass('btn-default');
       $(this).addClass('btn-primary').removeClass("btn-default");
     });
     var editor = new Editor();
