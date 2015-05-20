@@ -8,9 +8,9 @@
 
 var config = require('./config');
 
-if (!config.debug) {
-  require('newrelic');
-}
+// if (!config.debug) {
+//   require('newrelic');
+// }
 
 var path = require('path');
 var Loader = require('loader');

@@ -120,9 +120,11 @@ var config = {
 
   // 版块
   tabs: [
-    ['share', '分享'],
-    ['ask', '问答'],
-    ['job', '招聘'],
+    ['run', '跑步'],
+    ['basketball', '篮球'],
+    ['football', '足球'],
+    ['badminton', '羽毛球'],
+    ['others', '其他']
   ],
 
   // 极光推送
