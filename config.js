@@ -105,10 +105,10 @@ var config = {
 
   // 7牛的access信息，用于文件上传
   qn_access: {
-    accessKey: 'your access key',
-    secretKey: 'your secret key',
-    bucket: 'your bucket name',
-    domain: 'http://{bucket}.qiniudn.com'
+    accessKey: 'qmD79qq2RUVO1-cfnOR5o8Y7v5UuEpre1pZwe5ah',
+    secretKey: 'kR4NtM0QsCxZCAjk5e2_jwSJ328OMsmev1X8wdny',
+    bucket: 'myclub',
+    domain: 'http://7xijdk.com1.z0.glb.clouddn.com'
   },
 
   // 文件上传配置
