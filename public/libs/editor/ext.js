@@ -31,7 +31,7 @@
     var ToolLink = function(){
         var self = this;
         this.$win = $([
-            '<div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
+            '<div class="modal hide2 fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
                 '<div class="modal-header">',
                     '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
                     '<h3 id="editorToolImageTitle">添加连接</h3>',
@@ -40,14 +40,14 @@
                     '<form class="form-horizontal">',
                         '<div class="control-group">',
                             '<label class="control-label">标题</label>',
-                            '<div class="controls">',
-                                '<input type="text" name="title" placeholder="Title">',
+                            '<div>',
+                                '<input class="form-control" type="text" name="title" placeholder="Title">',
                             '</div>',
                         '</div>',
                         '<div class="control-group">',
                             '<label class="control-label">连接</label>',
-                            '<div class="controls">',
-                                '<input type="text" name="link" value="http://" placeholder="Link">',
+                            '<div >',
+                                '<input class="form-control" type="text" name="link" value="http://" placeholder="Link">',
                             '</div>',
                         '</div>',
                     '</form>',
@@ -84,7 +84,7 @@
     var ToolImage = function(){
         var self = this;
         this.$win = $([
-            '<div class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
+            '<div class="modal hide2 fade" tabindex="-1" role="dialog" aria-labelledby="editorToolImageTitle" aria-hidden="true">',
                 '<div class="modal-header">',
                     '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>',
                     '<h3 id="editorToolImageTitle">图片</h3>',
