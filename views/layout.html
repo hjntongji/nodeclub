@@ -42,24 +42,6 @@
   .done(assets, config.site_static_host, config.mini_assets)
   %>
 
-  <!-- scripts -->
-  <%- Loader('/public/index.min.js')
-  .js('/public/libs/jquery-2.1.4.min.js')
-  .js('/public/libs/swiper/swiper3.07.jquery.min.js')
-  .js('/public/libs/lodash.compat.js')
-  .js('/public/libs/jquery-ujs.js')
-  .js('/public/libs/bootstrap3/js/bootstrap.min.js')
-  .js('/public/libs/jquery.caret.js')
-  .js('/public/libs/jquery.atwho.js')
-  .js('/public/libs/markdownit.js')
-  .js('/public/libs/code-prettify/prettify.js')
-  .js('/public/libs/qrcode.js')
-  .js('/public/javascripts/main.js')
-  .js('/public/javascripts/responsive.js')
-  .done(assets, config.site_static_host, config.mini_assets)
-  %>
-
-
   <% if (typeof(topic) !== 'undefined') { %>
   <title><%= topic.title %> - <%= config.name %></title>
   <% } else if (typeof(pageTitle) !== 'undefined') { %>
@@ -159,6 +141,21 @@
   <script src="//s95.cnzz.com/z_stat.php?id=<%- config.cnzz_tracker_id %>&web_id=<%- config.cnzz_tracker_id %>" language="JavaScript"></script>
 </div>
 <% } %> -->
-
+    <!-- scripts -->
+  <%- Loader('/public/index.min.js')
+  .js('/public/libs/jquery-2.1.4.min.js')
+  .js('/public/libs/swiper/swiper3.07.jquery.min.js')
+  .js('/public/libs/lodash.compat.js')
+  .js('/public/libs/jquery-ujs.js')
+  .js('/public/libs/bootstrap3/js/bootstrap.min.js')
+  .js('/public/libs/jquery.caret.js')
+  .js('/public/libs/jquery.atwho.js')
+  .js('/public/libs/markdownit.js')
+  .js('/public/libs/code-prettify/prettify.js')
+  .js('/public/libs/qrcode.js')
+  .js('/public/javascripts/main.js')
+  .js('/public/javascripts/responsive.js')
+  .done(assets, config.site_static_host, config.mini_assets)
+  %>
 </body>
 </html>
