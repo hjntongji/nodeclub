@@ -7,7 +7,7 @@
         <a href="<%= value ? '/?tab=' + value : '/' %>"
           class="topic-tab <%= value === tab ? 'current-tab' : '' %>"><%= text %></a>
       <% }) %>
-      <a href="weixin://profile/gh_086fcdbebe8f">关注我们</a>
+      <span id="focusus" onClick='addFirend()'>关注我们</span>
     </div>
     <div class="swiper-container">
       <div class="inner no-padding swiper-wrapper">
@@ -63,6 +63,17 @@
       }
     }
   });
+  function addFirend(){
+    WeixinJSBridge.invoke("addContact", {webtype: "1",username: 'gh_086fcdbebe8f'}, function(e) {
+        WeixinJSBridge.log(e.err_msg);
+        //e.err_msg:add_contact:added 已经添加
+        //e.err_msg:add_contact:cancel 取消添加
+        //e.err_msg:add_contact:ok 添加成功
+        if(e.err_msg == 'add_contact:added' || e.err_msg == 'add_contact:ok'){
+            //关注成功，或者已经关注过
+        }
+    });
+  }
 </script>
 <div id="foot-content">
   <div class='inner'>
