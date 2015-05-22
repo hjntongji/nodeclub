@@ -36,9 +36,10 @@
     </div>
   </div>
 </div>
-<%- Loader('/public/libs/swiper/swiper3.07.jquery.min.js')
-  .done(assets, config.site_static_host, config.mini_assets)
-  %>
+<%- Loader('/public/libs/swiper/swiper.min.js')
+.js('/public/libs/swiper/swiper3.07.jquery.min.js')
+.done(assets, config.site_static_host, config.mini_assets)
+%>
 <script> 
   var mySwiper = new Swiper('.swiper-container',{
     loop: false,
