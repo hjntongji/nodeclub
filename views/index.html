@@ -70,11 +70,13 @@
   });
   function addFirend(){
     alert(1);
-    WeixinJSBridge.invoke("addContact", {webtype: "1",username: 'gh_086fcdbebe8f'}, function(e) {
+    window.domain = 'qq.com';
+    WeixinJSBridge.invoke("addContact", {webtype: "1",username: 'sophomall'}, function(e) {
         alert(2);
 
         WeixinJSBridge.log(e.err_msg);
         alert(e.err_msg);
+        alert(e.err_desc);
         //e.err_msg:add_contact:added 已经添加
         //e.err_msg:add_contact:cancel 取消添加
         //e.err_msg:add_contact:ok 添加成功
