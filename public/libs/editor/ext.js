@@ -93,7 +93,7 @@
                     '<div class="upload-img">',
                         '<div class="button">上传图片</div>',
                         '<span class="tip"></span>',
-                        '<div class="alert alert-error hide"></div>',
+                        '<div class="alert alert-error"></div>',
                     '</div>',
                 '</div>',
             '</div>'
@@ -113,6 +113,7 @@
         });
 
         this.$uploadTip = this.$upload.find('.tip').hide();
+        this.$upload.find('.alert-error').hide();
 
         this.file = false;
         var _csrf = $('[name=_csrf]').val();
@@ -124,8 +125,9 @@
             paste: document.body,
             dnd: this.$upload[0],
             auto: true,
+            fileNumLimit: 6,
             fileSingleSizeLimit: 2 * 1024 * 1024,
-            //sendAsBinary: true,
+            // sendAsBinary: true,
             // 只允许选择图片文件。
             accept: {
                 title: 'Images',
@@ -151,8 +153,7 @@
 
                 // 单位字节，如果图片大小小于此值，不会采用压缩。
                 compressSize: 200 * 1024 
-            },
-            fileNumLimit: 6
+            }
         });
 
         this.uploader.on('beforeFileQueued', function(file){
@@ -168,6 +169,8 @@
         });
 
         this.uploader.on('uploadSuccess', function(file, res){
+            console.log(file);
+            console.log(res);
             if(res.success){
                 self.$win.modal('hide');
                 self.editor.push(' !['+ file.name +']('+ res.url +')');
